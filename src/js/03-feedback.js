@@ -11,6 +11,19 @@ formEl.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
-  console.log(e.elements.email.value);
+  if (
+    formEl.elements.email.value === '' ||
+    formEl.elements.message.value === ''
+  ) {
+    return alert('Please fill in all the fields!');
+  }
+
+  console.log({
+    email: formEl.elements.email.value,
+    message: formEl.elements.message.value,
+  });
+  e.currentTarget.reset();
+  localStorage.removeItem(STORAGE_KEY);
 }
+
 function onInputData(e) {}
